@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plav's dream | Smeštaj u Plavu</title>
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --accent-color: #d4a373; 
+            --green-leaf: #52796f;
+            --light-bg: #fdfaf5;
+            --text-dark: #2d2d2d;
+            --booking-blue: #003580;
+            --airbnb-red: #FF5A5F;
+            --whatsapp-green: #25D366;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: #fff;
+            padding: 10px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px; 
+            width: auto;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        nav { display: flex; align-items: center; }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-color); }
+
+        .lang-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/867111106.jpg?k=76a9365601fecde2c6ae499b32d29187c9eac1791a35fdbe0a471c44846eb845&o='); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.4); }
+        .hero p { font-size: 1.4rem; margin-bottom: 30px; max-width: 600px; text-shadow: 1px 1px 5px rgba(0,0,0,0.4); }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.4s;
+            display: inline-block;
+            color: white;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+        
+        .btn-direct { background: var(--accent-color); }
+        .btn-booking { background: var(--booking-blue); }
+        .btn-airbnb { background: var(--airbnb-red); }
+        .btn-map { background: #4285F4; margin-top: 15px; }
+
+        .section { padding: 80px 10%; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 { color: var(--primary-color); font-size: 2.2rem; }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .features-list svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            color: var(--green-leaf);
+            flex-shrink: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-content { padding: 20px; }
+        .service-content h3 { margin-top: 0; color: var(--primary-color); }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .review-stars { color: #fbbc04; margin-bottom: 10px; }
+        .review-author { font-weight: bold; display: block; margin-top: 15px; color: var(--primary-color); }
+
+        .location-box {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        footer {
+            background: #f1f1f1;
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .contact-links a { color: white; text-decoration: none; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px 5%; gap: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            nav a { margin: 5px 10px; font-size: 0.85rem; }
+            .lang-btn { margin-left: 10px; }
+
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-btns { flex-direction: column; width: 100%; align-items: center; }
+            .btn { width: 80%; text-align: center; }
+
+            .grid-container { grid-template-columns: 1fr; gap: 30px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .features-list { grid-template-columns: 1fr; }
+            
+            .section { padding: 50px 5%; }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .gallery { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/38269925848" class="whatsapp-float" target="_blank">
+        <svg width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <header>
+        <a href="#" class="logo-container">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/573091977.jpg?k=96b60ce645dfb0aea6f6d719002b229983ed23a3b863858906be85834baa3633&o=" alt="Logo" class="logo-img">
+            <span class="logo-text">Plav's dream</span>
+        </a>
+        <nav>
+            <a href="#o-nama" data-sr="O apartmanu" data-en="About">O apartmanu</a>
+            <a href="#usluge" data-sr="Usluge" data-en="Services">Usluge</a>
+            <a href="#galerija" data-sr="Slike" data-en="Gallery">Slike</a>
+            <a href="#lokacija" data-sr="Lokacija" data-en="Location">Lokacija</a>
+            <a href="#kontakt" data-sr="Kontakt" data-en="Contact">Kontakt</a>
+            <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 id="hero-title">Plav's dream</h1>
+        <p id="hero-desc">Doživite mir uz balkon sa pogledom na planinu i blizinu Plavskog jezera.</p>
+        <div class="hero-btns">
+            <a href="#kontakt" class="btn btn-direct" id="btn-direct">Direktna Rezervacija</a>
+            <a href="https://www.booking.com/Share-qo5twR" target="_blank" class="btn btn-booking">Booking.com</a>
+            <a href="https://www.airbnb.com/rooms/1184717928431946922" target="_blank" class="btn btn-airbnb">Airbnb</a>
+        </div>
+    </section>
+
+    <section id="o-nama" class="section">
+        <div class="grid-container">
+            <div class="about-text">
+                <h2 id="about-title">Vaš kutak u srcu prirode</h2>
+                <p id="about-desc">Objekat <strong>Plav's dream</strong> nudi savršen spoj udobnosti i prirode. Naš prostrani apartman poseduje 2 spavaće sobe, moderno opremljenu kuhinju i terasu stvorenu za jutarnju kafu sa pogledom na planinske vrhove.</p>
+                
+                <ul class="features-list" id="features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>2 <span data-sr="Spavaće sobe" data-en="Bedrooms">Spavaće sobe</span></span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Besplatan WiFi</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-sr="Privatni parking" data-en="Private parking">Privatni parking</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-sr="Kuhinja sa frižiderom" data-en="Kitchen with fridge">Kuhinja sa frižiderom</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-sr="Recepcija 24/7" data-en="24/7 Reception">Recepcija 24/7</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-sr="Prevoz od/do aerodroma" data-en="Airport transfer">Prevoz od/do aerodroma</span></li>
+                </ul>
+            </div>
+            <div class="about-img">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/667807778.jpg?k=bc27536c0ef464e7a9e5eb162cb4a43cbd80a9247f713efe1cc8af732ace4af7&o=" alt="Dnevni boravak i kuhinja" style="width:100%; border-radius:10px;">
+            </div>
+        </div>
+    </section>
+
+    <section id="usluge" class="section" style="background-color: #f1ede4;">
+        <h2 id="services-title" style="text-align:center;">Posebne pogodnosti</h2>
+        <p id="services-desc" style="text-align:center; margin-bottom: 40px;">Želimo da vaš boravak bude što opušteniji.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://cf.bstatic.com/xdata/images/hotel/max300/697639379.jpg?k=3ae4dbac7a1bb836deef93d3a9b857fecd94a51938f94db9f9d68eb3fe5c42a7&o=" alt="Breakfast">
+                <div class="service-content">
+                    <h3 id="srv1-title">Domaći doručak</h3>
+                    <p id="srv1-desc">Započnite dan uz bogat doručak pripremljen od svježih lokalnih namirnica, serviran uz pogled na planine.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://cdn.jetphotos.com/640/6/14700_1571428955.jpg" alt="Aerodrom Podgorica">
+                <div class="service-content">
+                    <h3 id="srv2-title">Prevoz od/do aerodroma</h3>
+                    <p id="srv2-desc">Nudimo organizovan i siguran transfer od aerodroma direktno do naših vrata, kako ne biste brinuli o putu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerija" class="section" style="background: #fff;">
+        <h2 id="gallery-title" style="text-align:center;">Galerija</h2>
+        <div class="gallery">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/667808489.jpg?k=07d0a27c78a0a053d749003ef7650b38c3a2cd276f8261d5611ab17f5bbca9be&o=" alt="Soba 1">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/867110602.jpg?k=a95cb796f50582865d8dc8e46d2a03188afaa379d39dfa4170b4070fb0aa19c3&o=" alt="Soba 2">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/667807778.jpg?k=bc27536c0ef464e7a9e5eb162cb4a43cbd80a9247f713efe1cc8af732ace4af7&o=" alt="Kuhinja i trpezarija">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/667808374.jpg?k=5662a2f2ddc823f3af1b675701a9e44a57fc83c568f483f2805ea010723c8345&o=" alt="Kupatilo">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/860149747.jpg?k=5f5235b026f780dfa06b7304521bc79d13690b711a8a7747caa940a4cce321ba&o=" alt="Spoljašnjost 2">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/867110771.jpg?k=2e42e584716f6062a779dca88cd116365ff6bef5fbf84f90e6008ed1a14dac2f&o=" alt="Dodatna fotografija 1">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/867110700.jpg?k=82ce12cd06575e2fa0c7d835cef37e1832c7c218ec9396346dc7af6b5b02c4bf&o=" alt="Dodatna fotografija 2">
+        </div>
+    </section>
+
+    <section id="utisci" class="section" style="background-color: #f9f9f9;">
+        <h2 id="reviews-title" style="text-align:center;">Šta kažu naši gosti</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Prelijep apartman, domaćini su nas dočekali kao porodicu. Pogled na planine je nevjerovatan!"</p>
+                <span class="review-author">Marko, Srbija</span>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Excellent location near the lake. The apartment was spotless and very modern. Highly recommend!"</p>
+                <span class="review-author">John, UK</span>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p>"Sve je bilo savršeno. Doručak je bio preukusan, a kreveti veoma udobni. Vraćamo se sigurno."</p>
+                <span class="review-author">Emina, BiH</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="lokacija" class="section">
+        <div class="location-box">
+            <h3 id="loc-title">Savršena lokacija</h3>
+            <p id="loc-p1">📍 Nalazimo se u neposrednoj blizini <strong>Plavskog jezera</strong>.</p>
+            <p id="loc-p2">⛰️ <strong>Nacionalni park Prokletije:</strong> udaljen svega 10 km.</p>
+            <p id="loc-p3">✈️ <strong>Aerodrom Podgorica:</strong> udaljen 87 km.</p>
+            <a href="https://share.google/XjImtnVFwAfUITht3" target="_blank" class="btn btn-map" id="btn-map">Otvori u Google Mapama</a>
+        </div>
+    </section>
+
+    <section class="section" style="text-align:center; padding-top: 20px;">
+        <h2 id="cta-title">Spremni za odmor?</h2>
+        <p id="cta-desc">Rezervišite svoj termin na vrijeme putem vaše omiljene platforme.</p>
+        <div class="hero-btns">
+            <a href="https://www.booking.com/Share-qo5twR" target="_blank" class="btn btn-booking">Booking.com</a>
+            <a href="https://www.airbnb.com/rooms/1184717928431946922" target="_blank" class="btn btn-airbnb">Airbnb</a>
+        </div>
+    </section>
+
+    <footer id="kontakt">
+        <h2 id="footer-title">Kontaktirajte nas</h2>
+        <div class="contact-links" style="background: var(--primary-color); padding: 20px; border-radius: 10px; color: white; display: inline-block; text-align: left;">
+            <p>📞 <span data-sr="Telefon" data-en="Phone">Telefon</span>: <a href="tel:+38269925848">+382 69 925 848</a></p>
+            <p>📧 Email: <a href="mailto:plavsdream@gmail.com">plavsdream@gmail.com</a></p>
+            <p>🌐 Airbnb: <a href="https://www.airbnb.com/rooms/1184717928431946922" target="_blank" id="footer-airbnb">Pogledaj na Airbnb</a></p>
+            <p>🏨 Booking: <a href="https://www.booking.com/Share-qo5twR" target="_blank" id="footer-booking">Pogledaj na Booking.com</a></p>
+        </div>
+        <br><br>
+        <p>&copy; 2026 Plav's dream. <span id="rights">Sva prava zadržana.</span></p>
+    </footer>
+
+    <script>
+        let currentLang = 'sr';
+        const translations = {
+            en: {
+                "hero-title": "Plav's dream",
+                "hero-desc": "Experience peace with a mountain view balcony near Plav Lake.",
+                "btn-direct": "Direct Booking",
+                "about-title": "Your Corner in the Heart of Nature",
+                "about-desc": "Plav's dream offers a perfect blend of comfort and nature. Our spacious apartment features 2 bedrooms, a modern kitchen, and a terrace built for morning coffee with mountain views.",
+                "services-title": "Special Amenities",
+                "services-desc": "We want your stay to be as relaxing as possible.",
+                "srv1-title": "Homemade Breakfast",
+                "srv1-desc": "Start your day with a rich breakfast made from fresh local ingredients, served with a mountain view.",
+                "srv2-title": "Airport Transfer",
+                "srv2-desc": "We offer organized and safe transfers from the airport directly to our door, so you don't have to worry about the road.",
+                "gallery-title": "Gallery",
+                "reviews-title": "What our guests say",
+                "loc-title": "Perfect Location",
+                "loc-p1": "📍 Located in the immediate vicinity of Plav Lake.",
+                "loc-p2": "⛰️ Prokletije National Park: only 10 km away.",
+                "loc-p3": "✈️ Podgorica Airport: 87 km away.",
+                "btn-map": "Open in Google Maps",
+                "cta-title": "Ready for your vacation?",
+                "cta-desc": "Book your stay on time via your favorite platform.",
+                "footer-title": "Contact Us",
+                "footer-airbnb": "View on Airbnb",
+                "footer-booking": "View on Booking.com",
+                "rights": "All rights reserved."
+            },
+            sr: {
+                "hero-title": "Plav's dream",
+                "hero-desc": "Doživite mir uz balkon sa pogledom na planinu i blizinu Plavskog jezera.",
+                "btn-direct": "Direktna Rezervacija",
+                "about-title": "Vaš kutak u srcu prirode",
+                "about-desc": "Objekat Plav's dream nudi savršen spoj udobnosti i prirode. Naš prostrani apartman poseduje 2 spavaće sobe, moderno opremljenu kuhinju i terasu stvorenu za jutarnju kafu sa pogledom na planinske vrhove.",
+                "services-title": "Posebne pogodnosti",
+                "services-desc": "Želimo da vaš boravak bude što opušteniji.",
+                "srv1-title": "Domaći doručak",
+                "srv1-desc": "Započnite dan uz bogat doručak pripremljen od svježih lokalnih namirnica, serviran uz pogled na planine.",
+                "srv2-title": "Prevoz od/do aerodroma",
+                "srv2-desc": "Nudimo organizovan i siguran transfer od aerodroma direktno do naših vrata, kako ne biste brinuli o putu.",
+                "gallery-title": "Galerija",
+                "reviews-title": "Šta kažu naši gosti",
+                "loc-title": "Savršena lokacija",
+                "loc-p1": "📍 Nalazimo se u neposrednoj blizini Plavskog jezera.",
+                "loc-p2": "⛰️ Nacionalni park Prokletije: udaljen svega 10 km.",
+                "loc-p3": "✈️ Aerodrom Podgorica: udaljen 87 km.",
+                "btn-map": "Otvori u Google Mapama",
+                "cta-title": "Spremni za odmor?",
+                "cta-desc": "Rezervišite svoj termin na vrijeme putem vaše omiljene platforme.",
+                "footer-title": "Kontaktirajte nas",
+                "footer-airbnb": "Pogledaj na Airbnb",
+                "footer-booking": "Pogledaj na Booking.com",
+                "rights": "Sva prava zadržana."
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'sr' ? 'en' : 'sr';
+            document.querySelector('.lang-btn').innerText = currentLang === 'sr' ? 'EN' : 'SR';
+            
+            for (let id in translations[currentLang]) {
+                const el = document.getElementById(id);
+                if (el) el.innerText = translations[currentLang][id];
+            }
+
+            document.querySelectorAll('[data-sr]').forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+        }
+    </script>
+</body>
+</html>
